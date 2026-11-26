@@ -10,6 +10,7 @@ use crate::history::History;
 
 pub mod bash;
 pub mod fish;
+pub mod irak;
 pub mod nu;
 pub mod nu_histdb;
 pub mod powershell;

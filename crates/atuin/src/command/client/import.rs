@@ -3,6 +3,7 @@ use atuin_client::database::Sqlite;
 use atuin_client::history::History;
 use atuin_client::import::bash::Bash;
 use atuin_client::import::fish::Fish;
+use atuin_client::import::irak::Irak;
 use atuin_client::import::nu::Nu;
 use atuin_client::import::nu_histdb::NuHistDb;
 use atuin_client::import::powershell::PowerShell;
@@ -34,6 +35,8 @@ pub enum Cmd {
     ZshHistDb,
     #[command(about = fl!("cmd-import-shell", shell = "bash"))]
     Bash,
+    #[command(about = fl!("cmd-import-shell", shell = "irak"))]
+    Irak,
     #[command(about = fl!("cmd-import-shell", shell = "replxx"))]
     Replxx,
     #[command(about = fl!("cmd-import-shell", shell = "resh"))]
@@ -126,6 +129,7 @@ impl Cmd {
             Self::Zsh => import::<Zsh>(db).await,
             Self::ZshHistDb => import::<ZshHistDb>(db).await,
             Self::Bash => import::<Bash>(db).await,
+            Self::Irak => import::<Irak>(db).await,
             Self::Replxx => import::<Replxx>(db).await,
             Self::Resh => import::<Resh>(db).await,
             Self::Fish => import::<Fish>(db).await,
